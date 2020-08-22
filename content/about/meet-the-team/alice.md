@@ -1,4 +1,0 @@
----
-title: "Alice"
-navigation: true
----

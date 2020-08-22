@@ -1,4 +1,0 @@
----
-title: "Bob"
-navigation: true
----
