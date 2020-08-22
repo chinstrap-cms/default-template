@@ -31,6 +31,14 @@
             "Chinstrap\\Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php -r \"mkdir('cache');\"",
+            "php -r \"mkdir('logs');\"",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
+    },
+
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
