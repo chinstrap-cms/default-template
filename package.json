@@ -1,0 +1,43 @@
+{
+    "name": "statico",
+    "version": "0.0.1",
+    "description": "Flat file CMS",
+    "main": "resources/assets/js/main.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@gitlab.com/statico-cms/statico.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://gitlab.com/statico-cms/statico/issues"
+    },
+    "homepage": "https://gitlab.com/statico-cms/statico#readme",
+    "devDependencies": {
+        "@babel/core": "^7.11.4",
+        "axios": "^0.20.0",
+        "babel-loader": "^8.1.0",
+        "cross-env": "^7.0.2",
+        "fuse.js": "^6.4.1",
+        "jquery": "^3.5.1",
+        "laravel-mix": "^5.0.5",
+        "lodash": "^4.17.20",
+        "resolve-url-loader": "^3.1.1",
+        "sass": "^1.26.10",
+        "sass-loader": "^9.0.3",
+        "tailwindcss": "^1.7.3",
+        "vue-template-compiler": "^2.6.12"
+    }
+}

@@ -1,0 +1,14 @@
+vendor/
+build/
+tags
+node_modules/
+package-lock.json
+composer.lock
+htmlcov/
+infection.log
+output.html
+.env
+deploy.php
+db.sqlite
+.phpunit.result.cache
+clockwork/

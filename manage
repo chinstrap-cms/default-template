@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__.'/bootstrap.php';
+
+use Chinstrap\Core\Console\Runner;
+
+$runner = (new Runner())();

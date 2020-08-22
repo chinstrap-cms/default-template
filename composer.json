@@ -1,0 +1,39 @@
+{
+    "name": "chinstrap-cms/default-template",
+    "description": "Default template for the Chinstrap flat file CMS",
+    "type": "library",
+    "require": {
+        "php" : "~7.2",
+        "chinstrap-cms/core": "dev-master",
+        "chinstrap-cms/plugins-dynamic-search": "dev-master",
+        "chinstrap-cms/plugins-dynamic-sitemap": "dev-master"
+    },
+    "require-dev": {
+        "infection/infection": "^0.17.2",
+        "mockery/mockery": "^1.4",
+        "phpunit/phpunit": "^9.3",
+        "php-coveralls/php-coveralls": "^2.2",
+        "squizlabs/php_codesniffer": "^3.5",
+        "vimeo/psalm": "^3.14"
+    },
+    "suggest": {
+        "spatie/flysystem-dropbox": "Allows use of Dropbox as the Flysystem backend"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthew Daly",
+            "email": "450801+matthewbdaly@users.noreply.github.com"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "Chinstrap\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}

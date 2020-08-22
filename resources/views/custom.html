@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>{{ title }}</h1>
+    <h2>Custom template</h2>
+    {{ content | raw }}
+{% endblock %}
