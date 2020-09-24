@@ -11,20 +11,20 @@ use Exception;
 final class Runner
 {
     /**
-     * @var Application
+     * @var Kernel
      */
-    protected $app;
+    protected $kernel;
 
     public function __construct()
     {
-        $this->app = new Kernel();
+        $this->kernel = new Kernel();
     }
 
     public function __invoke()
     {
         try {
-            $this->app->bootstrap();
-            $container = $this->app->getContainer();
+            $this->kernel->bootstrap();
+            $container = $this->kernel->getContainer();
             $console = $container->get('Symfony\Component\Console\Application');
             $console->add($container->get('Chinstrap\Core\Console\Commands\FlushCache'));
             $console->add($container->get('Chinstrap\Core\Console\Commands\Shell'));

@@ -7,4 +7,6 @@ use Psr\Container\ContainerInterface;
 interface KernelInterface
 {
     public function getContainer(): ContainerInterface;
+
+    public function bootstrap(): void;
 }
