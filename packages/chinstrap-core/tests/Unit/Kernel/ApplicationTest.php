@@ -6,7 +6,7 @@ namespace Chinstrap\Core\Tests\Unit\Kernel;
 
 use Chinstrap\Core\Tests\TestCase;
 use Mockery as m;
-use Chinstrap\Core\Kernel\Application;
+use Chinstrap\Core\Kernel\Kernel;
 use PublishingKit\Config\Config;
 
 final class ApplicationTest extends TestCase
@@ -47,7 +47,7 @@ final class ApplicationTest extends TestCase
         $container->shouldReceive('get')->with('PublishingKit\Config\Config')
             ->once()
             ->andReturn(new Config([]));
-        $app = new Application($container);
+        $app = new Kernel($container);
         $app->bootstrap();
     }
 
@@ -71,7 +71,7 @@ final class ApplicationTest extends TestCase
         $container->shouldReceive('get')->with('PublishingKit\Config\Config')
             ->once()
             ->andReturn($config);
-        $app = new Application($container);
+        $app = new Kernel($container);
         $app->bootstrap();
     }
 
@@ -95,7 +95,7 @@ final class ApplicationTest extends TestCase
         $container->shouldReceive('get')->with('PublishingKit\Config\Config')
             ->once()
             ->andReturn($config);
-        $app = new Application($container);
+        $app = new Kernel($container);
         $app->bootstrap();
     }
 
@@ -132,7 +132,7 @@ final class ApplicationTest extends TestCase
             ->once()
             ->andReturn(new Config([]));
         $request = m::mock('Psr\Http\Message\ServerRequestInterface');
-        $app = new Application($container);
+        $app = new Kernel($container);
         $app->bootstrap();
         $this->assertEquals($response, $app->handle($request));
     }

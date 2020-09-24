@@ -7,7 +7,7 @@ namespace Chinstrap\Core\Tests\Unit\Console;
 use Chinstrap\Core\Tests\TestCase;
 use Chinstrap\Core\Tests\Traits\SetsPrivateProperties;
 use Chinstrap\Core\Console\Runner;
-use Chinstrap\Core\Kernel\Application;
+use Chinstrap\Core\Kernel\Kernel;
 use Mockery as m;
 
 final class RunnerTest extends TestCase
@@ -45,7 +45,7 @@ final class RunnerTest extends TestCase
             ->with('Chinstrap\Core\Console\Commands\GenerateSitemap')
             ->once()
             ->andReturn($mockCommand);
-        $mockApp = m::mock(new Application());
+        $mockApp = m::mock(new Kernel());
         $mockApp->shouldReceive('getContainer')
             ->once()
             ->andReturn($container);
@@ -57,7 +57,7 @@ final class RunnerTest extends TestCase
     public function testCatchError()
     {
         $this->expectOutputRegex('/^Unable to run/');
-        $mockApp = m::mock(new Application());
+        $mockApp = m::mock(new Kernel());
         $mockApp->shouldReceive('getContainer')
             ->once()
             ->andThrow('Exception');

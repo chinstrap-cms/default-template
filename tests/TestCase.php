@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Chinstrap\Tests;
 
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use Chinstrap\Core\Kernel\Application;
+use Chinstrap\Core\Kernel\Kernel;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
@@ -22,7 +22,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         if (!defined('PUBLIC_DIR')) {
             define('PUBLIC_DIR', __DIR__ . '/../public/');
         }
-        $this->app = new Application();
+        $this->app = new Kernel();
         $this->app->bootstrap();
         $this->container = $this->app->getContainer();
     }

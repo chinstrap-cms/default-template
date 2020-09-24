@@ -6,6 +6,7 @@ use Chinstrap\Core\Http\Middleware\ClockworkMiddleware;
 use Chinstrap\Core\Http\Middleware\HttpCachingProxyMiddleware;
 use Chinstrap\Core\Http\Middleware\RoutesMiddleware;
 use Chinstrap\Core\Http\Middleware\WhoopsMiddleware;
+use Chinstrap\Core\Kernel\Kernel;
 use Laminas\Diactoros\ResponseFactory;
 use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
@@ -22,38 +23,9 @@ if (!defined('PUBLIC_DIR')) {
 
 $app = new MiddlewarePipe();
 
-$container = new Container();
-$container->delegate(
-    new ReflectionContainer()
-);
-$providers = [
-              'Chinstrap\Core\Providers\ContainerProvider',
-              'Chinstrap\Core\Providers\CacheProvider',
-              'Chinstrap\Core\Providers\ClockworkProvider',
-              'Chinstrap\Core\Providers\ConfigProvider',
-              'Chinstrap\Core\Providers\ConsoleProvider',
-              'Chinstrap\Core\Providers\EventProvider',
-              'Chinstrap\Core\Providers\FlysystemProvider',
-              'Chinstrap\Core\Providers\FormsProvider',
-              'Chinstrap\Core\Providers\HandlerProvider',
-              'Chinstrap\Core\Providers\LoggerProvider',
-              'Chinstrap\Core\Providers\RouterProvider',
-              'Chinstrap\Core\Providers\SessionProvider',
-              'Chinstrap\Core\Providers\SitemapGeneratorProvider',
-              'Chinstrap\Core\Providers\SourceProvider',
-              'Chinstrap\Core\Providers\TwigProvider',
-              'Chinstrap\Core\Providers\TwigLoaderProvider',
-              'Chinstrap\Core\Providers\ViewProvider',
-              'Chinstrap\Core\Providers\YamlProvider',
-              'Chinstrap\Core\Providers\MailerProvider',
-              'Chinstrap\Core\Providers\GlideProvider',
-             ];
-
-foreach ($providers as $provider) {
-    $container->addServiceProvider($provider);
-}
-$container->share('response', \Laminas\Diactoros\Response::class);
-$container->share('Psr\Http\Message\ResponseInterface', \Laminas\Diactoros\Response::class);
+$kernel = new Kernel();
+$kernel->bootstrap();
+$container = $kernel->getContainer();
 
 $app->pipe($container->get(WhoopsMiddleware::class));
 $app->pipe($container->get(ClockworkMiddleware::class));

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Chinstrap\Core\Console;
 
-use Chinstrap\Core\Kernel\Application;
+use Chinstrap\Core\Kernel\Kernel;
 use Dotenv\Dotenv;
 use Exception;
 
@@ -17,7 +17,7 @@ final class Runner
 
     public function __construct()
     {
-        $this->app = new Application();
+        $this->app = new Kernel();
     }
 
     public function __invoke()
