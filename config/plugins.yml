@@ -1,1 +1,3 @@
 plugins:
+  - Chinstrap\Plugins\DynamicSearch\Plugin
+  - Chinstrap\Plugins\DynamicSitemap\Plugin
