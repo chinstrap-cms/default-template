@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-final class Routes implements MiddlewareInterface
+final class RoutesMiddleware implements MiddlewareInterface
 {
     /**
      * @var Router
