@@ -4,35 +4,9 @@
     "type": "library",
     "require": {
         "php": "~7.2",
-        "filp/whoops": "^2.7",
-        "itsgoingd/clockwork": "^4.1",
-        "laminas/laminas-diactoros": "^2.3",
-        "laminas/laminas-escaper": "^2.6",
-        "laminas/laminas-form": "^2.15",
-        "laminas/laminas-httphandlerrunner": "^1.2",
-        "laminas/laminas-stratigility": "^3.2",
-        "laminas/laminas-i18n": "^2.10",
-        "laminas/laminas-view": "^2.11",
-        "league/container": "^3.3",
-        "league/event": "^2.2",
-        "league/flysystem": "^1.1",
-        "league/flysystem-cached-adapter": "^1.1",
-        "league/flysystem-memory": "^1.0",
-        "league/glide": "^1.6",
-        "league/route": "^4.5",
-        "mnapoli/front-yaml": "^1.7",
-        "monolog/monolog": "^2.1",
-        "psy/psysh": "^0.10.4",
-        "publishing-kit/cache": "^0.0.1",
-        "publishing-kit/config": "^0.0.7",
-        "publishing-kit/http-proxy": "^0.0.1",
-        "publishing-kit/utilities": "^0.0.3",
-        "symfony/console": "^5.1",
-        "symfony/http-foundation": "^5.1",
-        "symfony/mailer": "^5.1",
-        "tedivm/stash": "^0.15.2",
-        "twig/twig": "^3.0",
-        "vlucas/phpdotenv": "^5.1"
+        "chinstrap-cms/core": "dev-master",
+        "chinstrap-cms/plugins-dynamic-search": "dev-master",
+        "chinstrap-cms/plugins-dynamic-sitemap": "dev-master"
     },
     "require-dev": {
         "infection/infection": "^0.17.2",
@@ -52,11 +26,6 @@
             "email": "450801+matthewbdaly@users.noreply.github.com"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "Chinstrap\\Core\\": "packages/chinstrap-core/src"
-        }
-    },
     "autoload-dev": {
         "psr-4": {
             "Chinstrap\\Tests\\": "tests/"

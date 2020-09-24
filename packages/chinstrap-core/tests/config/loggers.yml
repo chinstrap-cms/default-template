@@ -1,3 +1,0 @@
-loggers:
-  - logger: stream
-    path: logs/site.log

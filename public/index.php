@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Chinstrap\Core\Http\Middleware\ClockworkMiddleware;
 use Chinstrap\Core\Http\Middleware\HttpCachingProxyMiddleware;
+use Chinstrap\Core\Http\Middleware\NotFoundMiddleware;
 use Chinstrap\Core\Http\Middleware\RoutesMiddleware;
 use Chinstrap\Core\Http\Middleware\WhoopsMiddleware;
 use Chinstrap\Core\Kernel\Kernel;
@@ -31,6 +32,7 @@ $app->pipe($container->get(WhoopsMiddleware::class));
 $app->pipe($container->get(ClockworkMiddleware::class));
 $app->pipe($container->get(HttpCachingProxyMiddleware::class));
 $app->pipe($container->get(RoutesMiddleware::class));
+$app->pipe($container->get(NotFoundMiddleware::class));
 
 $server = new RequestHandlerRunner(
 	$app,
