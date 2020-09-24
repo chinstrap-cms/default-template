@@ -72,7 +72,6 @@ final class Application implements KernelInterface
         $this->setupContainer();
         $this->setErrorHandler();
         $this->setupPlugins();
-        $this->setupRoutes();
         return $this;
     }
 
@@ -121,30 +120,6 @@ final class Application implements KernelInterface
     private function setErrorHandler(): void
     {
         error_reporting(E_ALL);
-        $environment = getenv('APP_ENV');
-
-        $whoops = new \Whoops\Run();
-        if ($environment !== 'production') {
-            $whoops->prependHandler(new \Whoops\Handler\PrettyPageHandler());
-        } else {
-            $handler = $this->container->get('Chinstrap\Core\Contracts\Exceptions\Handler');
-            $whoops->prependHandler(new \Whoops\Handler\CallbackHandler($handler));
-        }
-        $whoops->register();
-    }
-
-    private function setupRoutes(): void
-    {
-        $router = $this->container->get('League\Route\Router');
-        if (getenv('APP_ENV') == 'development') {
-            $router->get('/__clockwork/{request:.+}', 'Chinstrap\Core\Http\Controllers\ClockworkController::process');
-        }
-        $router->get('/images/[{name}]', 'Chinstrap\Core\Http\Controllers\ImageController::get');
-        $router->get('/[{name:[a-zA-Z0-9\-\/]+}]', 'Chinstrap\Core\Http\Controllers\MainController::index')
-               ->middleware(new \Chinstrap\Core\Http\Middleware\HttpCache())
-               ->middleware(new \Chinstrap\Core\Http\Middleware\ETag());
-        $router->post('/[{name:[a-zA-Z0-9\-\/]+}]', 'Chinstrap\Core\Http\Controllers\MainController::submit');
-        $this->router = $router;
     }
 
     private function setupPlugins(): void
