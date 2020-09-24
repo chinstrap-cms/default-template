@@ -11,7 +11,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use PublishingKit\HttpProxy\Client;
 
-final class HttpProxyMiddleware implements MiddlewareInterface
+final class HttpCachingProxyMiddleware implements MiddlewareInterface
 {
     /**
      * @var CacheItemPoolInterface
