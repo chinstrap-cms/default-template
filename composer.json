@@ -4,7 +4,6 @@
     "type": "library",
     "require": {
         "php" : "~7.2",
-        "chinstrap-cms/core": "dev-master",
         "chinstrap-cms/plugins-dynamic-search": "dev-master",
         "chinstrap-cms/plugins-dynamic-sitemap": "dev-master"
     },
@@ -26,6 +25,11 @@
             "email": "450801+matthewbdaly@users.noreply.github.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Chinstrap\\Core\\": "packages/chinstrap-core/src"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "Chinstrap\\Tests\\": "tests/"
