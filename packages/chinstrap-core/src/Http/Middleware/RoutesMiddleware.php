@@ -41,10 +41,6 @@ final class RoutesMiddleware implements MiddlewareInterface
                 '404.html'
             );
         }
-        if (getenv('APP_ENV') == 'development') {
-            $clockwork = $this->container->get('Clockwork\Support\Vanilla\Clockwork');
-            $clockwork->requestProcessed();
-        }
         return $response;
     }
 }
