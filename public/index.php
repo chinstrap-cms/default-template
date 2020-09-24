@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
+use Chinstrap\Core\Http\Middleware\ClockworkMiddleware;
+use Chinstrap\Core\Http\Middleware\HttpCachingProxyMiddleware;
 use Chinstrap\Core\Http\Middleware\RoutesMiddleware;
+use Chinstrap\Core\Http\Middleware\WhoopsMiddleware;
 use Laminas\Diactoros\ResponseFactory;
 use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
@@ -52,6 +55,9 @@ foreach ($providers as $provider) {
 $container->share('response', \Laminas\Diactoros\Response::class);
 $container->share('Psr\Http\Message\ResponseInterface', \Laminas\Diactoros\Response::class);
 
+$app->pipe($container->get(WhoopsMiddleware::class));
+$app->pipe($container->get(ClockworkMiddleware::class));
+$app->pipe($container->get(HttpCachingProxyMiddleware::class));
 $app->pipe($container->get(RoutesMiddleware::class));
 
 $server = new RequestHandlerRunner(

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Chinstrap\Core\Http\Middleware;
 
+use Chinstrap\Core\Contracts\Views\Renderer;
 use League\Route\Router;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -17,9 +18,21 @@ final class RoutesMiddleware implements MiddlewareInterface
      */
     private $router;
 
-    public function __construct(Router $router)
+    /**
+     * @var Renderer
+     */
+    private $renderer;
+
+    /**
+     * @var ResponseInterface
+     */
+    private $response;
+
+    public function __construct(Router $router, Renderer $renderer, ResponseInterface $response)
     {
         $this->router = $router;
+        $this->renderer = $renderer;
+        $this->response = $response;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -35,9 +48,8 @@ final class RoutesMiddleware implements MiddlewareInterface
         try {
             $response = $this->router->dispatch($request);
         } catch (\League\Route\Http\Exception\NotFoundException $e) {
-            $view = $this->container->get('Chinstrap\Core\Contracts\Views\Renderer');
-            $response = $view->render(
-                $this->container->get('response')->withStatus(404),
+            $response = $this->renderer->render(
+                $this->response->withStatus(404),
                 '404.html'
             );
         }

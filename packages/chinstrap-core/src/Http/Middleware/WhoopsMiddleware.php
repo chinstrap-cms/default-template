@@ -28,5 +28,6 @@ final class WhoopsMiddleware implements MiddlewareInterface
             $this->whoops->prependHandler(new PrettyPageHandler());
         }
         $this->whoops->register();
+        return $handler->handle($request);
     }
 }
