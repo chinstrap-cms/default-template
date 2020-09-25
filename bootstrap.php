@@ -16,6 +16,9 @@ error_reporting(E_ALL);
 if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . '.env')) {
     $dotenv = Dotenv\Dotenv::createImmutable(ROOT_DIR);
     $dotenv->load();
+    $dotenv->required('APP_ENV')->notEmpty();
+    $dotenv->required('BASE_URL')->notEmpty();
+    $dotenv->required('CACHE_PROXY')->isBoolean();
 }
 if (getenv('APP_ENV') == 'development') {
     ini_set('display_errors', '1');
