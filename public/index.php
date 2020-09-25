@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
+use Chinstrap\Core\Exceptions\ErrorHandler;
 use Chinstrap\Core\Http\Middleware\ClockworkMiddleware;
 use Chinstrap\Core\Http\Middleware\HttpCachingProxyMiddleware;
 use Chinstrap\Core\Http\Middleware\NotFoundMiddleware;
 use Chinstrap\Core\Http\Middleware\RoutesMiddleware;
 use Chinstrap\Core\Http\Middleware\WhoopsMiddleware;
 use Chinstrap\Core\Kernel\Kernel;
-use Laminas\Diactoros\ResponseFactory;
 use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use Laminas\HttpHandlerRunner\RequestHandlerRunner;
@@ -35,19 +35,12 @@ $app->pipe($container->get(RoutesMiddleware::class));
 $app->pipe($container->get(NotFoundMiddleware::class));
 
 $server = new RequestHandlerRunner(
-	$app,
-	new SapiEmitter(),
-	static function () {
-		return ServerRequestFactory::fromGlobals();
-	},
-	static function (\Throwable $e) {
-		$response = (new ResponseFactory())->createResponse(500);
-		$response->getBody()->write(sprintf(
-			'An error occurred: %s',
-			$e->getMessage
-		));
-		return $response;
-	}
+    $app,
+    new SapiEmitter(),
+    static function () {
+        return ServerRequestFactory::fromGlobals();
+    },
+    $container->get(ErrorHandler::class)
 );
 
 $server->run();
