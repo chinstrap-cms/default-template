@@ -19,7 +19,7 @@ if (!defined('PUBLIC_DIR')) {
 }
 
 $factory = new AppFactory();
-if ($_ENV['CACHE_PROXY'] == true) {
+if ($_ENV['CACHE_PROXY'] === true) {
     $config = new Config([
         'driver' => 'filesystem',
         'path'   => 'cache/proxy',
