@@ -4,5 +4,10 @@
 require_once __DIR__.'/bootstrap.php';
 
 use Chinstrap\Core\Console\Runner;
+use Chinstrap\Core\Kernel\ContainerFactory;
+use Chinstrap\Core\Kernel\Kernel;
 
-$runner = (new Runner())();
+$container = (new ContainerFactory())();
+$kernel = new Kernel($container);
+$kernel->bootstrap();
+$runner = (new Runner($container))();

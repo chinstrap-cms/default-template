@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Chinstrap\Core\Exceptions\ErrorHandler;
 use Chinstrap\Core\Kernel\AppFactory;
 use Chinstrap\Core\Kernel\CachingRequestHandlerDecorator;
+use Chinstrap\Core\Kernel\ContainerFactory;
 use Laminas\Diactoros\ResponseFactory;
 use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
@@ -18,7 +19,7 @@ if (!defined('PUBLIC_DIR')) {
     define('PUBLIC_DIR', __DIR__);
 }
 
-$factory = new AppFactory();
+$factory = new AppFactory((new ContainerFactory())());
 if ($_ENV['CACHE_PROXY'] === true) {
     $config = new Config([
         'driver' => 'filesystem',
