@@ -1,7 +1,5 @@
 {
-    "name": "chinstrap-cms/default-template",
-    "version": "0.0.1",
-    "description": "Flat file CMS",
+    "private": true,
     "main": "resources/assets/js/main.js",
     "directories": {
         "test": "tests"
