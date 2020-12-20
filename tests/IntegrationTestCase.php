@@ -16,6 +16,9 @@ abstract class IntegrationTestCase extends TestCase
 
     public function makeRequest(string $uri, string $method = 'GET', $server = [], $files = [], $body = 'php://input', $headers = [], $cookies = [], $queryParams = [], $parsedBody = null): IntegrationTestCase
     {
+        if (!isset($server['APP_ENV'])) {
+            $server['APP_ENV'] = 'testing';
+        }
         $request = new ServerRequest(
             $server,
             $files,
