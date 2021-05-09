@@ -3,7 +3,7 @@
     "description": "Default template for the Chinstrap flat file CMS",
     "type": "library",
     "require": {
-        "php": "~7.2",
+        "php": ">=7.4",
         "chinstrap-cms/core": "dev-master",
         "chinstrap-cms/plugins-dynamic-search": "dev-master",
         "chinstrap-cms/plugins-dynamic-sitemap": "dev-master"
