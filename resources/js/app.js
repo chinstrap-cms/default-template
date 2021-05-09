@@ -20,7 +20,7 @@ window.navHeader = function () {
         this.items = [];
       }
       const result = window.fuse.search(value);
-      this.items = result;
+      this.items = result.map(item => item.item);
     },
     items: [],
   };

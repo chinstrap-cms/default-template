@@ -3,13 +3,11 @@
       <span class="text-xl font-semibold tracking-tight"><a href="/" class="text-white no-underline">Chinstrap</a></span>
   </div>
   <input type="search" id="search" class="p-2" x-on:input="updateSearch" />
-  <template x-if="items">
-      <ul>
-          <template x-for="item in items" :key="item.url">
-              <li><a :href="item.url" x-text="item.title" /></li>
-          </template>
-      </ul>
-  </template>
+  <ul x-show="items.length">
+      <template x-for="item in items" :key="item.url">
+          <li><a :href="item.url" x-text="item.title" /></li>
+      </template>
+  </ul>
   <div class="block lg:hidden">
     <button class="flex items-center px-3 py-2 border rounded text-purple-lighter border-purple-light hover:text-white hover:border-white">
       <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
