@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+if (!defined('PUBLIC_DIR')) {
+    define('PUBLIC_DIR', __DIR__);
+}
 if (!defined('ROOT_DIR')) {
     define('ROOT_DIR', __DIR__ . '/');
 }

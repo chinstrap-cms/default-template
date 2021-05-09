@@ -15,10 +15,6 @@ use PublishingKit\Config\Config;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-if (!defined('PUBLIC_DIR')) {
-    define('PUBLIC_DIR', __DIR__);
-}
-
 $factory = new AppFactory((new ContainerFactory())());
 if ($_ENV['CACHE_PROXY'] === true) {
     $config = new Config([

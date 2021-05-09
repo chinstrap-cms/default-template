@@ -14,8 +14,17 @@ abstract class IntegrationTestCase extends TestCase
         chdir('public');
     }
 
-    public function makeRequest(string $uri, string $method = 'GET', $server = [], $files = [], $body = 'php://input', $headers = [], $cookies = [], $queryParams = [], $parsedBody = null): IntegrationTestCase
-    {
+    public function makeRequest(
+        string $uri,
+        string $method = 'GET',
+        $server = [],
+        $files = [],
+        $body = 'php://input',
+        $headers = [],
+        $cookies = [],
+        $queryParams = [],
+        $parsedBody = null
+    ): IntegrationTestCase {
         if (!isset($server['APP_ENV'])) {
             $server['APP_ENV'] = 'testing';
         }
