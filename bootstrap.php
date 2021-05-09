@@ -20,7 +20,7 @@ if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . '.env')) {
     $dotenv->required('BASE_URL')->notEmpty();
     $dotenv->required('CACHE_PROXY')->isBoolean();
 }
-if (getenv('APP_ENV') == 'development') {
+if (getenv('APP_ENV') === 'development') {
     ini_set('display_errors', '1');
 } else {
     ini_set('display_errors', '0');

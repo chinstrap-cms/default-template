@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Chinstrap\Tests\Integration;
 
 use Chinstrap\Tests\IntegrationTestCase;
-use Mockery as m;
 
 /**
  * @runTestsInSeparateProcesses

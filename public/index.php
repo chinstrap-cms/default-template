@@ -23,7 +23,7 @@ $factory = new AppFactory((new ContainerFactory())());
 if ($_ENV['CACHE_PROXY'] === true) {
     $config = new Config([
         'driver' => 'filesystem',
-        'path'   => 'cache/proxy',
+        'path' => 'cache/proxy',
     ]);
     $app = new CachingRequestHandlerDecorator(
         $factory(),

@@ -39,7 +39,7 @@ abstract class IntegrationTestCase extends TestCase
         if (!isset($this->response)) {
             throw new \Exception('No response has been received');
         }
-        self::assertThat($this->response->getStatusCode() == $code, self::isTrue(), $message);
+        self::assertThat($this->response->getStatusCode() === $code, self::isTrue(), $message);
         return $this;
     }
 
