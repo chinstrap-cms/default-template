@@ -9,11 +9,13 @@
         "chinstrap-cms/plugins-dynamic-sitemap": "dev-master"
     },
     "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "infection/infection": "^0.17.2",
         "mockery/mockery": "^1.4",
-        "phpunit/phpunit": "^9.3",
         "php-coveralls/php-coveralls": "^2.2",
-        "squizlabs/php_codesniffer": "^3.5",
+        "phpunit/phpunit": "^9.3",
+        "slevomat/coding-standard": "^7.0",
+        "squizlabs/php_codesniffer": "^3.6",
         "vimeo/psalm": "^4.3"
     },
     "suggest": {
