@@ -1,22 +1,28 @@
 import Fuse from 'fuse.js';
 import 'alpinejs';
 
-function navHeader() {
+window.navHeader = function () {
   return {
     initSearch() {
       fetch(`/storage/index.json`)
         .then((response) => {
           return response.json();
         }).then((json) => {
-          const fuse = new Fuse(json, {
+          window.fuse = new Fuse(json, {
             keys: ['title'],
             shouldSort: true
           });
         });
     },
     updateSearch(event) {
-      debugger;
-    }
+      const value = event.currentTarget.value;
+      if (value.length === 0) {
+        this.items = [];
+      }
+      const result = window.fuse.search(value);
+      this.items = result;
+    },
+    items: [],
   };
 };
 // $('#search').on('keyup', function () {

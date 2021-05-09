@@ -1973,25 +1973,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function navHeader() {
+window.navHeader = function () {
   return {
     initSearch: function initSearch() {
       fetch("/storage/index.json").then(function (response) {
         return response.json();
       }).then(function (json) {
-        var fuse = new fuse_js__WEBPACK_IMPORTED_MODULE_0__.default(json, {
+        window.fuse = new fuse_js__WEBPACK_IMPORTED_MODULE_0__.default(json, {
           keys: ['title'],
           shouldSort: true
         });
       });
     },
     updateSearch: function updateSearch(event) {
-      debugger;
-    }
-  };
-}
+      var value = event.currentTarget.value;
 
-; // $('#search').on('keyup', function () {
+      if (value.length === 0) {
+        this.items = [];
+      }
+
+      var result = window.fuse.search(value);
+      this.items = result;
+    },
+    items: []
+  };
+}; // $('#search').on('keyup', function () {
 //   let result = fuse.search($(this).val());
 //   // Output it
 //   let resultdiv = $('ul.searchresults');
