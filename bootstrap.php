@@ -5,13 +5,13 @@ declare(strict_types=1);
 require_once __DIR__ . '/vendor/autoload.php';
 
 if (!defined('PUBLIC_DIR')) {
-    define('PUBLIC_DIR', __DIR__);
+    define('PUBLIC_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'public');
 }
 if (!defined('ROOT_DIR')) {
-    define('ROOT_DIR', __DIR__ . '/');
+    define('ROOT_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 }
 if (!defined('CONTENT_PATH')) {
-    define('CONTENT_PATH', 'content/');
+    define('CONTENT_PATH', 'content' . DIRECTORY_SEPARATOR);
 }
 
 error_reporting(E_ALL);
