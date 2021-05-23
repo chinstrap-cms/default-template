@@ -5,7 +5,9 @@
   <input type="search" id="search" class="p-2" x-on:input="updateSearch" />
   <ul x-show="items.length">
       <template x-for="item in items" :key="item.url">
-          <li><a :href="item.url" x-text="item.title" /></li>
+          <li>
+              <a :href="item.url" x-text="item.title"></a>
+          </li>
       </template>
   </ul>
   <div class="block lg:hidden">
